@@ -1,35 +1,13 @@
 import { ApolloServer } from "@apollo/server";
 import { loadFiles } from "@graphql-tools/load-files";
 import { startStandaloneServer } from "@apollo/server/standalone";
-import { randomUUID } from "crypto";
-
-// ダミーデータ
-const users = [
-  { id: "1", name: "user", email: "user@email.com" },
-  { id: "2", name: "guest", email: "guest@email.com" },
-];
-
-// リゾルバーの定義
-const resolvers = {
-  Query: {
-    users: () => users,
-  },
-  Mutation: {
-    createUser: (_parent: any, args: any, _context: any, _info: any) => {
-      const newUser = {
-        id: randomUUID(),
-        name: args.name,
-        email: args.email,
-      };
-      users.push(newUser);
-      return newUser;
-    },
-  },
-};
+import { resolvers } from "./resolvers";
 
 // Apollo Serverのセットアップ
 const server = new ApolloServer({
+  // スキーマ定義の指定
   typeDefs: await loadFiles("src/**/*.gql"),
+  // リゾルバーの指定
   resolvers,
 });
 
