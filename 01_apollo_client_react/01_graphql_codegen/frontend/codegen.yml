@@ -1,6 +1,8 @@
 overwrite: true
-schema: "http://localhost:4000" # Apollo Serverのエンドポイント
-documents: "src/**/*.tsx" # GraphQL クエリを含むファイルのパス
+schema:
+  - "../backend/src/graphql/schema.gql" # GraphQLのスキーマファイル
+#schema: "http://localhost:4000" # GraphQLのスキーマファイル(URL指定でも良い)
+documents: "src/query.gql" # クライアントから発行するクエリファイル
 generates:
   src/generated/graphql.tsx:
     plugins:

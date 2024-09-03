@@ -17,23 +17,38 @@ export type Scalars = {
   Float: { input: number; output: number; }
 };
 
+export type Mutation = {
+  __typename?: 'Mutation';
+  createUser: Array<User>;
+};
+
+
+export type MutationCreateUserArgs = {
+  input?: InputMaybe<UserInput>;
+};
+
 export type Query = {
   __typename?: 'Query';
-  hello?: Maybe<Scalars['String']['output']>;
-  users?: Maybe<Array<Maybe<User>>>;
+  hello: Scalars['String']['output'];
+  users: Array<User>;
 };
 
 export type User = {
   __typename?: 'User';
-  email: Scalars['String']['output'];
-  id: Scalars['ID']['output'];
-  name: Scalars['String']['output'];
+  email?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['ID']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+};
+
+export type UserInput = {
+  email: Scalars['String']['input'];
+  name: Scalars['String']['input'];
 };
 
 export type GetHelloQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetHelloQuery = { __typename?: 'Query', hello?: string | null };
+export type GetHelloQuery = { __typename?: 'Query', hello: string };
 
 
 export const GetHelloDocument = gql`
