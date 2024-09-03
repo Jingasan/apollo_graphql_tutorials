@@ -1,4 +1,21 @@
 # クライアントから発行するクエリ
+
 query GetHello {
   hello
+}
+
+query GetUsers {
+  users {
+    id
+    name
+    email
+  }
+}
+
+mutation CreateUser($input: UserInput) {
+  createUser(input: $input) {
+    id
+    name
+    email
+  }
 }
