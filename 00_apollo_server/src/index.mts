@@ -1,8 +1,13 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
+import { randomUUID } from "crypto";
 
 // GraphQLスキーマの定義
 const typeDefs = `#graphql
+  type Query {
+    hello: String
+  }
+
   type User {
     id: ID!
     name: String!
@@ -10,8 +15,11 @@ const typeDefs = `#graphql
   }
 
   type Query {
-    hello: String
-    users: [User]
+    users: [User!]!
+  }
+
+  type Mutation {
+    createUser(name: String!, email: String!): User!
   }
 `;
 
@@ -26,6 +34,17 @@ const resolvers = {
   Query: {
     hello: () => "Hello, world!",
     users: () => users,
+  },
+  Mutation: {
+    createUser: (_parent, { name, email }, _context) => {
+      const newUser = {
+        id: randomUUID(),
+        name,
+        email,
+      };
+      users.push(newUser);
+      return newUser;
+    },
   },
 };
 
