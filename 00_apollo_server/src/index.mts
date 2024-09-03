@@ -36,11 +36,11 @@ const resolvers = {
     users: () => users,
   },
   Mutation: {
-    createUser: (_parent, { name, email }, _context) => {
+    createUser: (_parent: any, args: any, _context: any) => {
       const newUser = {
         id: randomUUID(),
-        name,
-        email,
+        name: args.name,
+        email: args.email,
       };
       users.push(newUser);
       return newUser;
