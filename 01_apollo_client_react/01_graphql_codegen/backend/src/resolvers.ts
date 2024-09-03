@@ -10,6 +10,7 @@ const users = [
 export const resolvers = {
   Query: {
     users: () => users,
+    hello: () => "Hello, world!",
   },
   Mutation: {
     createUser: (_parent: any, args: any, _context: any, _info: any) => {
@@ -19,7 +20,7 @@ export const resolvers = {
         email: args.input.email,
       };
       users.push(newUser);
-      return newUser;
+      return users;
     },
   },
 };

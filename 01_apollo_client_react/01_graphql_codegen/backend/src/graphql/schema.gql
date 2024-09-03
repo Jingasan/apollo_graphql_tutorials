@@ -12,8 +12,9 @@ input UserInput {
 
 type Query {
   users: [User!]!
+  hello: String!
 }
 
 type Mutation {
-  createUser(input: UserInput): User!
+  createUser(input: UserInput): [User!]!
 }
