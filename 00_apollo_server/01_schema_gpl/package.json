@@ -1,0 +1,24 @@
+{
+  "name": "hello_world",
+  "version": "0.0.1",
+  "description": "",
+  "type": "module",
+  "main": "dist/index.mjs",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/index.mts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@apollo/server": "^4.11.0",
+    "@graphql-tools/load-files": "^7.0.0",
+    "graphql": "^16.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.2",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.4"
+  }
+}
