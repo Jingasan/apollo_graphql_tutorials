@@ -1,8 +1,8 @@
 # GraphQLスキーマの定義
 type User {
-  id: ID!
-  name: String!
-  email: String!
+  id: ID
+  name: String
+  email: String
 }
 
 input UserInput {

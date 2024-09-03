@@ -15,8 +15,8 @@ export const resolvers = {
     createUser: (_parent: any, args: any, _context: any, _info: any) => {
       const newUser = {
         id: randomUUID(),
-        name: args.name,
-        email: args.email,
+        name: args.input.name,
+        email: args.input.email,
       };
       users.push(newUser);
       return newUser;
