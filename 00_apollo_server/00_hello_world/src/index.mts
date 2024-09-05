@@ -8,7 +8,7 @@ const typeDefs = `#graphql
   }
 `;
 
-// リゾルバーの定義
+// リゾルバーマップの定義
 const resolvers = {
   Query: {
     hello: () => "Hello, world!",

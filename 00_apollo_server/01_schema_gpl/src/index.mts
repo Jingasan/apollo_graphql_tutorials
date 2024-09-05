@@ -9,7 +9,7 @@ const users = [
   { id: "2", name: "guest", email: "guest@email.com" },
 ];
 
-// リゾルバーの定義
+// リゾルバーマップの定義
 const resolvers = {
   Query: {
     users: () => users,
