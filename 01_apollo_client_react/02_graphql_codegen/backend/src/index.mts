@@ -1,7 +1,7 @@
 import { ApolloServer } from "@apollo/server";
 import { loadFiles } from "@graphql-tools/load-files";
 import { startStandaloneServer } from "@apollo/server/standalone";
-import { resolvers } from "./resolvers";
+import { resolvers } from "./resolvers.mjs";
 
 // Apollo Serverのセットアップ
 const server = new ApolloServer({
