@@ -18,10 +18,11 @@ let currentNumber = 0;
 
 // スキーマの定義
 const typeDefs = `#graphql
+  # Queryのスキーマ（ApolloServerの仕様上、最低１つのQuery型が必須）
   type Query {
     currentNumber: Int
   }
-
+  # Subscriptionのスキーマ
   type Subscription {
     numberIncremented: Int
   }
@@ -108,5 +109,5 @@ function incrementNumber() {
   pubsub.publish("NUMBER_INCREMENTED", { numberIncremented: currentNumber });
   setTimeout(incrementNumber, 1000);
 }
-// Start incrementing
+// 自動インクリメント開始
 incrementNumber();
