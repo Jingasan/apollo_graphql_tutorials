@@ -6,7 +6,7 @@ import {
   InMemoryCache,
   useQuery,
 } from "@apollo/client";
-import { GetHelloQuery, GetHelloDocument } from "@/generated/graphql";
+import { GetHelloQuery, GetHelloDocument } from "@/graphql/generated";
 
 // Apollo Clientの設定
 const client = new ApolloClient({
