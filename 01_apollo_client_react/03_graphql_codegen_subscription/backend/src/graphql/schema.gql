@@ -3,6 +3,11 @@ type Query {
   _empty: Int
 }
 
+# Mutationの型定義
+type Mutation {
+  incrementNumber: Int
+}
+
 # Subscriptionの型定義
 type Subscription {
   numberIncremented: Int

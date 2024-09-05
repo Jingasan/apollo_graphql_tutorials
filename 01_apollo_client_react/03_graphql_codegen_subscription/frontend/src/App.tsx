@@ -1,9 +1,26 @@
-import { ApolloProvider, useSubscription } from "@apollo/client";
+import { ApolloProvider, useMutation, useSubscription } from "@apollo/client";
 import {
+  IncrementNumberMutation,
+  IncrementNumberDocument,
   NumberIncrementedSubscription,
   NumberIncrementedDocument,
 } from "./generated/graphql";
 import { client } from "./client";
+
+// サブスクリプションのPublish用コンポーネント
+const IncrementNumber = () => {
+  const [incrementNumber] = useMutation<IncrementNumberMutation>(
+    IncrementNumberDocument
+  );
+  const handleClick = () => {
+    incrementNumber();
+  };
+  return (
+    <div>
+      <button onClick={handleClick}>Increment Number</button>
+    </div>
+  );
+};
 
 // サブスクリプション受信コンポーネント
 const NumberIncrementer = () => {
@@ -13,14 +30,15 @@ const NumberIncrementer = () => {
   const { data, loading, error } =
     useSubscription<NumberIncrementedSubscription>(NumberIncrementedDocument);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (loading) return <h1>Current Number: 0</h1>;
+  if (error) return <h1>Error: {error.message}</h1>;
   return <h1>Current Number: {data?.numberIncremented}</h1>;
 };
 
 // ApolloProviderでアプリ全体をラップし、Apollo Clientを利用可能にする。
 const App = () => (
   <ApolloProvider client={client}>
+    <IncrementNumber />
     <NumberIncrementer />
   </ApolloProvider>
 );

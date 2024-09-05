@@ -10,9 +10,6 @@ import { useServer } from "graphql-ws/lib/use/ws";
 import cors from "cors";
 import { pubsub, resolvers } from "./resolvers.mjs";
 
-// 数値インクリメント用のグローバル変数
-let currentNumber = 0;
-
 // スキーマの作成
 const schema = makeExecutableSchema({
   typeDefs: await loadFiles("src/**/*.gql"),
@@ -73,12 +70,3 @@ httpServer.listen(PORT, () => {
   console.log(`Query endpoint ready at http://localhost:${PORT}/graphql`);
   console.log(`Subscription endpoint ready at ws://localhost:${PORT}/graphql`);
 });
-
-// 動作確認の為のタイマーによる実行処理：1秒おきにPublishする。
-function incrementNumber() {
-  currentNumber++;
-  pubsub.publish("NUMBER_INCREMENTED", { numberIncremented: currentNumber });
-  setTimeout(incrementNumber, 1000);
-}
-// 自動インクリメント開始
-incrementNumber();

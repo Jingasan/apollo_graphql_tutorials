@@ -1,4 +1,9 @@
-# サブスクリプションのクエリ
+# PublishのMutationクエリ
+mutation IncrementNumber {
+  incrementNumber
+}
+
+# SubscribeのSubscriptionクエリ
 subscription NumberIncremented {
   numberIncremented
 }
