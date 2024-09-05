@@ -1,0 +1,4 @@
+# サブスクリプションのクエリ
+subscription NumberIncremented {
+  numberIncremented
+}
