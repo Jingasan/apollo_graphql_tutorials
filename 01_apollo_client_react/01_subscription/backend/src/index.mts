@@ -10,7 +10,10 @@ import { PubSub } from "graphql-subscriptions";
 import bodyParser from "body-parser";
 import cors from "cors";
 
-// Pubsubクラス：イベントの発行(publish)と購読(subscribe)を処理するクラス
+// Pubsubクラス（開発環境用）：イベントの発行(publish)と購読(subscribe)を処理するクラス
+// https://www.apollographql.com/docs/apollo-server/data/subscriptions/#production-pubsub-libraries
+// 以下のPubSubクラスはインメモリ型のPubSubであるため、
+// 本番環境ではRedisなどの外部DBを用いるPubsubクラスパッケージを使用するべきである。
 const pubsub = new PubSub();
 
 // A number that we'll increment over time to simulate subscription events
