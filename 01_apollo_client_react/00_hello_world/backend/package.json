@@ -12,8 +12,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@apollo/server": "^4.11.0",
-    "graphql": "^16.9.0"
+    "@apollo/server": "^4.11.0"
   },
   "devDependencies": {
     "@types/node": "^22.5.2",
