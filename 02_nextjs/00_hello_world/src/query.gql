@@ -1,0 +1,4 @@
+# クライアントから発行するクエリ
+query GetHello {
+  hello
+}

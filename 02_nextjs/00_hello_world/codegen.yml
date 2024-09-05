@@ -1,0 +1,11 @@
+overwrite: true
+schema: "http://localhost:3000/api/graphql" # GraphQLのスキーマファイル(URL指定でも良い)
+#schema:
+#  - "../backend/src/graphql/schema.gql" # GraphQLのスキーマファイル
+documents: "src/query.gql" # クライアントから発行するクエリファイル
+generates:
+  src/generated/graphql.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
