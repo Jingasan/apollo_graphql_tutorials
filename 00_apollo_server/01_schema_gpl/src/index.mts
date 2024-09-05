@@ -29,7 +29,9 @@ const resolvers = {
 
 // Apollo Serverのセットアップ
 const server = new ApolloServer({
+  // 型定義の指定
   typeDefs: await loadFiles("src/**/*.gql"),
+  // リゾルバーマップの指定
   resolvers,
 });
 

@@ -1,7 +1,7 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 
-// GraphQLスキーマの定義
+// 型定義
 const typeDefs = `#graphql
   type User {
     id: ID!
@@ -9,6 +9,7 @@ const typeDefs = `#graphql
     email: String!
   }
 
+  # Queryの型定義
   type Query {
     hello: String
     users: [User]
@@ -31,8 +32,8 @@ const resolvers = {
 
 // Apollo Serverのセットアップ
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
+  typeDefs, // 型定義の指定
+  resolvers, // リゾルバーマップの指定
 });
 
 // サーバー起動処理

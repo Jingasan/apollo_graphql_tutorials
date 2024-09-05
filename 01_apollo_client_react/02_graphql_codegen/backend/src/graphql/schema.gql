@@ -1,4 +1,5 @@
-# GraphQLスキーマの定義
+# GraphQLの型定義
+
 type User {
   id: ID
   name: String

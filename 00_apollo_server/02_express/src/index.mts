@@ -5,7 +5,7 @@ import express from "express";
 import http from "http";
 import cors from "cors";
 
-// GraphQLスキーマの定義
+// GraphQL型定義
 const typeDefs = `#graphql
   type User {
     id: ID!
@@ -40,8 +40,8 @@ interface MyContext {
 const app = express();
 const httpServer = http.createServer(app);
 const server = new ApolloServer<MyContext>({
-  typeDefs,
-  resolvers,
+  typeDefs, // 型定義の指定
+  resolvers, // リゾルバーマップの指定
   plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });
 

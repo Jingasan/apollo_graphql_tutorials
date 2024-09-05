@@ -18,13 +18,13 @@ const pubsub = new PubSub();
 // 数値インクリメント用のグローバル変数
 let currentNumber = 0;
 
-// スキーマの定義
+// 型定義
 const typeDefs = `#graphql
-  # Queryのスキーマ（ApolloServerの仕様上、最低１つのQuery型が必須）
+  # Queryの型定義（ApolloServerの仕様上、最低１つのQuery型が必須）
   type Query {
     currentNumber: Int
   }
-  # Subscriptionのスキーマ
+  # Subscriptionの型定義
   type Subscription {
     numberIncremented: Int
   }
@@ -46,8 +46,8 @@ const resolvers = {
   },
 };
 
-// リゾルバー付きのスキーマを作成
-const schemaWithResolvers = makeExecutableSchema({ typeDefs, resolvers });
+// スキーマの作成
+const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 // HTTPサーバーを作成（後ほどWebSocketサーバーとApolloServerを割り当てる）
 const app = express();
@@ -61,14 +61,14 @@ const wsServer = new WebSocketServer({
 // useServerでWebSocketを介したGraphQLのSubscriptionを扱うことができるようになる。
 const serverCleanup = useServer(
   {
-    schema: schemaWithResolvers, // リゾルバー付きのGraphQLスキーマを渡す
+    schema: schema, // リゾルバー付きのGraphQLスキーマを渡す
   },
   wsServer
 );
 
 // ApolloServerのセットアップ
 const server = new ApolloServer({
-  schema: schemaWithResolvers, // リゾルバー付きのGraphQLスキーマを渡す
+  schema: schema, // リゾルバー付きのGraphQLスキーマを渡す
   // Apollo Serverの動作をカスタマイズ
   plugins: [
     // Apollo Serverを立ち上げるためにHTTPサーバーをシャットダウン

@@ -13,8 +13,8 @@ import { pubsub, resolvers } from "./resolvers.mjs";
 // 数値インクリメント用のグローバル変数
 let currentNumber = 0;
 
-// リゾルバー付きのスキーマを作成
-const schemaWithResolvers = makeExecutableSchema({
+// スキーマの作成
+const schema = makeExecutableSchema({
   typeDefs: await loadFiles("src/**/*.gql"),
   resolvers,
 });
@@ -31,14 +31,14 @@ const wsServer = new WebSocketServer({
 // useServerでWebSocketを介したGraphQLのSubscriptionを扱うことができるようになる。
 const serverCleanup = useServer(
   {
-    schema: schemaWithResolvers, // リゾルバー付きのGraphQLスキーマを渡す
+    schema: schema, // リゾルバー付きのGraphQLスキーマを渡す
   },
   wsServer
 );
 
 // ApolloServerのセットアップ
 const server = new ApolloServer({
-  schema: schemaWithResolvers, // リゾルバー付きのGraphQLスキーマを渡す
+  schema: schema, // リゾルバー付きのGraphQLスキーマを渡す
   // Apollo Serverの動作をカスタマイズ
   plugins: [
     // Apollo Serverを立ち上げるためにHTTPサーバーをシャットダウン

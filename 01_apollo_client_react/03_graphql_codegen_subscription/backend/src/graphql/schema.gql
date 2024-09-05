@@ -1,9 +1,9 @@
-# Queryのスキーマ定義（ApolloServerの仕様上、最低１つのQuery型が必須）
+# Queryの型定義（ApolloServerの仕様上、最低１つのQuery型が必須）
 type Query {
   _empty: Int
 }
 
-# Subscriptionのスキーマ定義
+# Subscriptionの型定義
 type Subscription {
   numberIncremented: Int
 }
