@@ -16,7 +16,7 @@ import cors from "cors";
 // 本番環境ではRedisなどの外部DBを用いるPubsubクラスパッケージを使用するべきである。
 const pubsub = new PubSub();
 
-// A number that we'll increment over time to simulate subscription events
+// 数値インクリメント用のグローバル変数
 let currentNumber = 0;
 
 // スキーマの定義
