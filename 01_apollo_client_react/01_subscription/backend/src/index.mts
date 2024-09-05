@@ -105,7 +105,6 @@ httpServer.listen(PORT, () => {
   console.log(`Subscription endpoint ready at ws://localhost:${PORT}/graphql`);
 });
 
-// In the background, increment a number every second and notify subscribers when it changes.
 // 動作確認の為のタイマーによる実行処理：1秒おきにPublishする。
 function incrementNumber() {
   currentNumber++;
