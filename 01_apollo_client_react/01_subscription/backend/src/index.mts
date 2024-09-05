@@ -7,7 +7,6 @@ import { makeExecutableSchema } from "@graphql-tools/schema";
 import { WebSocketServer } from "ws";
 import { useServer } from "graphql-ws/lib/use/ws";
 import { PubSub } from "graphql-subscriptions";
-import bodyParser from "body-parser";
 import cors from "cors";
 
 // Pubsubクラス（開発環境用）：イベントの発行(publish)と購読(subscribe)を処理するクラス
@@ -95,7 +94,7 @@ await server.start();
 app.use(
   "/graphql",
   cors<cors.CorsRequest>(),
-  bodyParser.json(),
+  express.json(),
   expressMiddleware(server)
 );
 // HTTPサーバーを指定したポート番号でリッスンさせる。

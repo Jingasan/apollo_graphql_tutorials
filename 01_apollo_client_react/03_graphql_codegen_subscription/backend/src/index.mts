@@ -7,7 +7,6 @@ import { loadFiles } from "@graphql-tools/load-files";
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import { WebSocketServer } from "ws";
 import { useServer } from "graphql-ws/lib/use/ws";
-import bodyParser from "body-parser";
 import cors from "cors";
 import { pubsub, resolvers } from "./resolvers.mjs";
 
@@ -65,7 +64,7 @@ await server.start();
 app.use(
   "/graphql",
   cors<cors.CorsRequest>(),
-  bodyParser.json(),
+  express.json(),
   expressMiddleware(server)
 );
 // HTTPサーバーを指定したポート番号でリッスンさせる。
